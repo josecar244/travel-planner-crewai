@@ -4,7 +4,7 @@ services:
     name: travel-planner-backend
     env: docker
     dockerContext: travel_crew_backend
-    dockerfilePath: Dockerfile
+    dockerfilePath: travel_crew_backend/Dockerfile
     plan: free
     region: ohio
     envVars:
@@ -22,7 +22,7 @@ services:
     name: travel-planner-frontend
     env: docker
     dockerContext: Front-End-Proyecto-Chatbot-de-Viajes
-    dockerfilePath: Dockerfile
+    dockerfilePath: Front-End-Proyecto-Chatbot-de-Viajes/Dockerfile
     plan: free
     region: ohio
     envVars:
