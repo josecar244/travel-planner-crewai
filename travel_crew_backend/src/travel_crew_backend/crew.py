@@ -35,8 +35,12 @@ class TravelCrew():
 		self.search_tool = InternetSearchTool()
 		
 		# Configurar el LLM (modelo de IA: Gemini) que usarán todos los agentes
+		model_name = os.getenv("MODEL")
+		if not model_name:
+			model_name = "gemini-2.5-flash-lite"
+			
 		self.llm = ChatGoogleGenerativeAI(
-			model=os.getenv("MODEL", "gemini-2.5-flash"), 
+			model=model_name, 
 			google_api_key=os.getenv("GOOGLE_API_KEY")
 		)
 

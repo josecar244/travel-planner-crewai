@@ -21,8 +21,8 @@ COPY . .
 # Ensure PYTHONPATH is set so that modules can be found
 ENV PYTHONPATH="/app/src"
 
-# Expose port 8005 (as defined in main.py)
-EXPOSE 8005
+# Render provides the port via the PORT environment variable
+EXPOSE 10000
 
-# Run the application
-CMD ["uvicorn", "travel_crew_backend.main:app", "--host", "0.0.0.0", "--port", "8005"]
+# Run the application with a dynamic port
+CMD ["uvicorn", "travel_crew_backend.main:app", "--host", "0.0.0.0", "--port", "10000"]
