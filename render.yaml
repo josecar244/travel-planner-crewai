@@ -27,4 +27,4 @@ services:
     region: ohio
     envVars:
       - key: BACKEND_URL
-        value: http://travel-planner-backend:10000/plan-trip
+        value: https://travel-planner-backend-zjip.onrender.com/plan-trip
