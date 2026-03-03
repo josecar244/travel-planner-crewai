@@ -4,14 +4,14 @@ services:
     name: travel-planner-backend
     env: docker
     dockerContext: travel_crew_backend
-    dockerfile: Dockerfile
+    dockerfilePath: Dockerfile
     plan: free # Nota: El nivel free tiene 512MB RAM. Si falla por memoria, usa 'starter'
     region: ohio
     envVars:
       - key: GOOGLE_API_KEY
         sync: false # Lo configurarás manualmente en el Dashboard de Render
       - key: MODEL
-        value: gemini-2.0-flash # Optimizado para baja latencia
+        value: gemini-2.5-flash-lite # Modelo ligero y eficiente para entorno de prueba
       - key: PYTHONPATH
         value: /app/src
 
@@ -20,7 +20,7 @@ services:
     name: travel-planner-frontend
     env: docker
     dockerContext: Front-End-Proyecto-Chatbot-de-Viajes
-    dockerfile: Dockerfile
+    dockerfilePath: Dockerfile
     plan: free
     region: ohio
     envVars:
