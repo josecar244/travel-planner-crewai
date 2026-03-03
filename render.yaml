@@ -27,8 +27,4 @@ services:
     region: ohio
     envVars:
       - key: BACKEND_URL
-        fromService:
-          name: travel-planner-backend
-          type: web
-          property: host
-        suffix: /plan-trip
+        value: http://travel-planner-backend:10000/plan-trip
