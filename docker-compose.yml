@@ -1,0 +1,34 @@
+# Docker Compose for CrewAI Travel Planner
+services:
+  backend:
+    build:
+      context: ./travel_crew_backend
+      dockerfile: Dockerfile
+    container_name: travel_backend
+    ports:
+      - "8005:8005"
+    env_file:
+      - ./travel_crew_backend/.env
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - travel_network
+
+  frontend:
+    build:
+      context: ./Front-End-Proyecto-Chatbot-de-Viajes
+      dockerfile: Dockerfile
+    container_name: travel_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://backend:8005/plan-trip # Connect to backend using container name
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - backend
+    networks:
+      - travel_network
+
+networks:
+  travel_network:
+    driver: bridge

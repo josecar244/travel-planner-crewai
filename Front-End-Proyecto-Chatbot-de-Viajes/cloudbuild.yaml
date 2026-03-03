@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'Dockerfile.prod', '-t', 'us-central1-docker.pkg.dev/ai-engineer-11-inofuente/repo-crewai-streamlit-frontend/image-v2-crewai-streamlit-frontend:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/ai-engineer-11-inofuente/repo-crewai-streamlit-frontend/image-v2-crewai-streamlit-frontend:latest']

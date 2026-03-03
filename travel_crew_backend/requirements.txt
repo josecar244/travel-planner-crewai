@@ -1,0 +1,9 @@
+crewai
+crewai-tools
+langchain-openai
+fastapi
+uvicorn[standard]
+python-dotenv
+ddgs
+qdrant-client[fastembed]
+crewai[tools]

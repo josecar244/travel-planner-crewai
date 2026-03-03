@@ -1,0 +1,32 @@
+services:
+  # 🧠 El Cerebro: Backend con CrewAI y FastAPI
+  - type: web
+    name: travel-planner-backend
+    env: docker
+    dockerContext: travel_crew_backend
+    dockerfile: Dockerfile
+    plan: free # Nota: El nivel free tiene 512MB RAM. Si falla por memoria, usa 'starter'
+    region: ohio
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false # Lo configurarás manualmente en el Dashboard de Render
+      - key: MODEL
+        value: gemini-2.0-flash # Optimizado para baja latencia
+      - key: PYTHONPATH
+        value: /app/src
+
+  # 🎨 La Cara: Frontend con Streamlit
+  - type: web
+    name: travel-planner-frontend
+    env: docker
+    dockerContext: Front-End-Proyecto-Chatbot-de-Viajes
+    dockerfile: Dockerfile
+    plan: free
+    region: ohio
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          name: travel-planner-backend
+          type: web
+          property: host
+        suffix: /plan-trip
